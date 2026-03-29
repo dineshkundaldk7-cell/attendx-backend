@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs');
 const supabase = require('./config/supabase');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 // ── Middleware ────────────────────────────────────────────
 app.use(cors({ origin: process.env.CORS_ORIGIN || '*' }));
@@ -84,7 +84,7 @@ async function seedAdmin() {
 }
 
 // ── Start ─────────────────────────────────────────────────
-app.listen(PORT, async () => {
+app.listen(PORT, '0.0.0.0', async () => {
   console.log(`\n🚀 AttendX backend running on port ${PORT}`);
   console.log(`   Health check: http://localhost:${PORT}/health`);
   await seedAdmin();
